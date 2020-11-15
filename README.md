@@ -1,4 +1,9 @@
 # LINEDEL
+
+```
+python3 linedel.py [input_file = ~/.ssh/known_hosts] line_number_to_remove
+```
+
 This python function allows you to delete a specified line from a file. The idea is to quickly remove an SSH key from your known host once a device has been replaced.
 To do so, here is how you can use this function:
 
