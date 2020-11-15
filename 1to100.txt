@@ -1,5 +1,6 @@
 1 - un
 2 - deux
+3 - trois
 4 - quatre
 5 - cinq
 6 - six
@@ -45,7 +46,8 @@
 46 - quarante-six
 47 - quarante-sept
 48 - quarante-huit
-49 - quarante-neuf 50cinquante
+49 - quarante-neuf 
+50 - cinquante
 51 - cinquante-et-un
 52 - cinquante-deux
 53 - cinquante-trois
