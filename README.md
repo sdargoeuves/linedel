@@ -25,7 +25,7 @@ You can also specified the file you want to remove the line from.
 If you add the following lines in your ```~/.bashrc file```, you will be able to use this function very simply.
 ```
 function sshdel() {
-        python3 ~/Documents/python/linedel/linedel.py $1
+        python3 ~/python/linedel/linedel.py $1
 }
 ```
 
