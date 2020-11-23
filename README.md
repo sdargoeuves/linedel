@@ -22,14 +22,14 @@ You can also specified the file you want to remove the line from.
 
 
 ### Use this script in .bashrc
-If you add the following lines in your ```~/.bashrc file```, you will be able to use this function very simply.
+If you add the following lines in your ```~/.bashrc``` file, you will be able to use this function very simply.
 ```
-function sshdel() {
-        python3 ~/python/linedel/linedel.py $1
+function linedel() {
+        python3 ~/python/linedel/linedel.py $@
 }
 ```
 
 In order to delete line X from your known_hosts file, you just need to enter this:
 ```
-sshdel X
+linedel X
 ```
