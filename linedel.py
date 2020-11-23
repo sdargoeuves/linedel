@@ -22,8 +22,7 @@ def linedel():
     except:
         err_msg = "##ERR## the value should be a Positive Integer:\npython3 linedel.py [input_file] line_number_to_remove" 
         sys.exit(err_msg)
-
-    src_list = []
+    
     output_file = "".join(["/tmp/", os.path.basename(input_file), ".bak"])
     index = 0
     line_removed = False
