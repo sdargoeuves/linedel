@@ -1,9 +1,25 @@
+"""
+Welcome LINEDEL.py
+"""
+
 import os
 import sys
+import argparse
 
 def linedel():
+    default_file_ssh = os.path.expanduser("~") + "/.ssh/known_hosts"
     #Check that we have input_file as argument
-    if len(sys.argv) == 2:
+    parser = argparse.ArgumentParser(description=
+            "For linedel to work, you need to specify source file (optional)\
+            and the line to delete")
+    parser.add_argument("-f", "--file", help="Source file, [default = ~/.ssh/known_hosts]",
+            default=default_file_ssh, type=str)
+    parser.add_argument("line_arg", help="line to delete", type=int)
+    args = parser.parse_args()
+    input_file = args.file
+    line_arg = args.line_arg
+
+    """if len(sys.argv) == 2:
         input_file = os.path.expanduser("~") + "/.ssh/known_hosts"
         line_arg = sys.argv[1]
     elif len(sys.argv) == 3:
@@ -12,7 +28,7 @@ def linedel():
     else:
         err_msg = ("##ERR## You need to specify [src file and] the line to delete as arguments:\n"
             "python3 linedel.py [input_file] line_number_to_remove")
-        sys.exit(err_msg)
+        sys.exit(err_msg)"""
 
     #confirm the value of the argument is an integer
     try:
