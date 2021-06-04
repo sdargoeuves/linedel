@@ -6,14 +6,21 @@ import os
 import sys
 import argparse
 
+
 def linedel():
     default_file_ssh = os.path.expanduser("~") + "/.ssh/known_hosts"
-    #Check that we have input_file as argument
-    parser = argparse.ArgumentParser(description=
-            "For linedel to work, you need to specify source file (optional)\
-            and the line to delete")
-    parser.add_argument("-f", "--file", help="Source file, [default = ~/.ssh/known_hosts]",
-            default=default_file_ssh, type=str)
+    # Check that we have input_file as argument
+    parser = argparse.ArgumentParser(
+        description="For linedel to work, you need to specify source file (optional)\
+            and the line to delete"
+    )
+    parser.add_argument(
+        "-f",
+        "--file",
+        help="Source file, [default = ~/.ssh/known_hosts]",
+        default=default_file_ssh,
+        type=str,
+    )
     parser.add_argument("line_arg", help="line to delete", type=int)
     args = parser.parse_args()
     input_file = args.file
@@ -30,28 +37,32 @@ def linedel():
             "python3 linedel.py [input_file] line_number_to_remove")
         sys.exit(err_msg)"""
 
-    #confirm the value of the argument is an integer
+    # confirm the value of the argument is an integer
     try:
         line_arg = int(line_arg)
         if line_arg > 0:
             line_rm = int(line_arg) - 1
         else:
-            raise ValueError("#ERR## the value should be a Positive Integer greater than 0")
+            raise ValueError(
+                "#ERR## the value should be a Positive Integer greater than 0"
+            )
     except ValueError as err_msg:
         sys.exit(err_msg)
     except:
-        err_msg = ("##ERR## Unkown error, try again:\n"
-            "python3 linedel.py [input_file] line_number_to_remove")
+        err_msg = (
+            "##ERR## Unkown error, try again:\n"
+            "python3 linedel.py [input_file] line_number_to_remove"
+        )
         sys.exit(err_msg)
-    
-    #create variables
+
+    # create variables
     output_file = "".join(["/tmp/", os.path.basename(input_file), ".bak"])
     index = 0
     line_removed = False
-    
-    #Confirm the file exists, and add the values in a list
+
+    # Confirm the file exists, and add the values in a list
     if os.path.isfile(input_file):
-        with open(input_file, 'r') as in_file, open(output_file, 'w') as out_file:
+        with open(input_file, "r") as in_file, open(output_file, "w") as out_file:
             for line in in_file:
                 if index != line_rm:
                     out_file.write(line)
@@ -61,15 +72,19 @@ def linedel():
     else:
         err_msg = f"##ERR## Input file '{input_file}' does not exist"
         sys.exit(err_msg)
-    
-    #if a line has been removed, we remove the original file and replace with the output
+
+    # if a line has been removed, we remove the original file and replace with the output
     if line_removed:
         os.remove(input_file)
         os.rename(output_file, input_file)
-        print("##INFO## line '%s' has been removed from the file '%s'" % (line_arg, input_file))
+        print(
+            "##INFO## line '%s' has been removed from the file '%s'"
+            % (line_arg, input_file)
+        )
     else:
         os.remove(output_file)
         print("##INFO## No line removed from the file '%s'" % (input_file))
+
 
 if __name__ == "__main__":
     linedel()
