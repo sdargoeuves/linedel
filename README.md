@@ -25,7 +25,7 @@ You can also specified the file you want to remove the line from.
 If you add the following lines in your ```~/.bashrc``` file, you will be able to use this function very simply.
 ```
 function linedel() {
-        python3 ~/python/linedel/linedel.py $@
+        python3 ~/linedel/linedel.py $@
 }
 ```
 
