@@ -41,7 +41,7 @@ def linedel():
     try:
         line_arg = int(line_arg)
         if line_arg > 0:
-            line_rm = int(line_arg) - 1
+            line_rm = line_arg - 1
         else:
             raise ValueError(
                 "#ERR## the value should be a Positive Integer greater than 0"
@@ -57,11 +57,11 @@ def linedel():
 
     # create variables
     output_file = "".join(["/tmp/", os.path.basename(input_file), ".bak"])
-    index = 0
     line_removed = False
 
     # Confirm the file exists, and add the values in a list
     if os.path.isfile(input_file):
+        index = 0
         with open(input_file, "r") as in_file, open(output_file, "w") as out_file:
             for line in in_file:
                 if index != line_rm:
